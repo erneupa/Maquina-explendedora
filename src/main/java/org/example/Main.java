@@ -9,10 +9,11 @@ public class Main {
 
 
         int seleccion = 0;
+        boolean estadoSeleccion=false;
 
 
         boolean apagar=false;
-        do{
+        do {
             System.out.println("1. Mostrar escaparate y cuadrícula de stock");
             System.out.println("2. Seleccionar producto y añadir al carrito");
             System.out.println("3. Consultar cesta de la compra actual");
@@ -20,8 +21,20 @@ public class Main {
             System.out.println("5. Modo Mantenimiento / Reposición");
             System.out.println("6. Salir / Apagar máquina");
 
-            System.out.println("Escribe la opción que quieres hacer");
-            seleccion=escaner.nextInt();
+            System.out.println("Escribe la opción que quieres hacer: ");
+            seleccion = escaner.nextInt();
+
+            while (estadoSeleccion!=true){
+                if (seleccion <=0 || seleccion > 6){
+                    System.out.println("Vuelve a escribir una opción correcta: ");
+                    seleccion = escaner.nextInt();
+                    estadoSeleccion = false;
+                }
+                else{
+                    estadoSeleccion = true;
+                }
+            }
+
 
             switch (seleccion) {
                 case 1:
@@ -46,6 +59,8 @@ public class Main {
 
             }
         }while (apagar!=true);
+
+
 
     }
 }
