@@ -7,13 +7,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner escaner = new Scanner(System.in);
 
-
+        String[][] arrayMaquina = new String[6][5];
         int seleccion = 0;
         boolean estadoSeleccion=false;
 
 
         boolean apagar=false;
         do {
+            FunctionImprimirMatriz.imprimirMatriz(arrayMaquina);
+
             System.out.println("1. Mostrar escaparate y cuadrícula de stock");
             System.out.println("2. Seleccionar producto y añadir al carrito");
             System.out.println("3. Consultar cesta de la compra actual");
