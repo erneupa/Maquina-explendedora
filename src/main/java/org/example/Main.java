@@ -11,6 +11,8 @@ public class Main {
         int seleccion = 0;
         boolean estadoSeleccion=false;
 
+        int[][] arrayMaquinaBack = new int[6][5];
+
 
         boolean apagar=false;
         do {
@@ -40,7 +42,7 @@ public class Main {
 
             switch (seleccion) {
                 case 1:
-                    System.out.println("Acción 1 inactiva");
+                    FunctionImprimirMatrizBack.imprimirMatrizBack(arrayMaquinaBack);
                     break;
                 case 2:
                     System.out.println("Acción 2 inactiva");
