@@ -5,17 +5,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner escaner = new Scanner(System.in);
+
+        Scanner escanerSeleccion = new Scanner(System.in);
+        Scanner escanerSeleccionProducto = new Scanner(System.in);
 
         String[][] arrayMaquina = new String[6][5];
+        int[][] arrayMaquinaBack = new int[6][5];
+
         int seleccion = 0;
         boolean estadoSeleccion=false;
 
-        int[][] arrayMaquinaBack = new int[6][5];
+        String seleccionProducto;
+        boolean seleccionProductoEncontrado=false;
 
 
         boolean apagar=false;
+
         do {
+
             FunctionImprimirMatriz.imprimirMatriz(arrayMaquina);
 
             System.out.println("1. Mostrar escaparate y cuadrícula de stock");
@@ -26,43 +33,82 @@ public class Main {
             System.out.println("6. Salir / Apagar máquina");
 
             System.out.println("Escribe la opción que quieres hacer: ");
-            seleccion = escaner.nextInt();
+            seleccion = escanerSeleccion.nextInt();
 
-            while (estadoSeleccion!=true){
+            while (!estadoSeleccion){
+
                 if (seleccion <=0 || seleccion > 6){
+
                     System.out.println("Vuelve a escribir una opción correcta: ");
-                    seleccion = escaner.nextInt();
-                    estadoSeleccion = false;
+                    seleccion = escanerSeleccion.nextInt();
+
                 }
                 else{
+
                     estadoSeleccion = true;
                 }
             }
 
 
             switch (seleccion) {
+
                 case 1:
+
                     FunctionImprimirMatrizBack.imprimirMatrizBack(arrayMaquinaBack);
                     break;
+
                 case 2:
-                    System.out.println("Acción 2 inactiva");
-                    break;
-                case 3:
-                    System.out.println("Acción 3 inactiva");
-                    break;
-                case 4:
-                    System.out.println("Acción 4 inactiva");
-                    break;
-                case 5:
-                    System.out.println("Acción 5 inactiva");
-                    break;
-                case 6:
-                    System.out.println("Saliendo...");
-                    apagar=true;
+
+                    System.out.println("Escribe el código de producto para añadirlo al carrito: ");
+                    seleccionProducto=escanerSeleccionProducto.nextLine();
+
+                    do{
+
+                        for (String[] fila : arrayMaquina){
+                            for (String columna :fila){
+
+                                if (seleccionProducto.equals(columna)){
+
+                                    System.out.println("Guardando el producto "+seleccionProducto+" en el carrito");
+                                    seleccionProductoEncontrado=true;
+
+                                }
+
+                            }
+                        }
+
+                        if (!seleccionProductoEncontrado){
+                            System.out.println("Escribe el código de producto para añadirlo al carrito: ");
+                            seleccionProducto=escanerSeleccionProducto.nextLine();
+                        }
+
+                    }while(!seleccionProductoEncontrado);
+
                     break;
 
+                case 3:
+
+                    System.out.println("Acción 3 inactiva");
+                    break;
+
+                case 4:
+
+                    System.out.println("Acción 4 inactiva");
+                    break;
+
+                case 5:
+
+                    System.out.println("Acción 5 inactiva");
+                    break;
+
+                case 6:
+
+                    System.out.println("Saliendo...");
+                    apagar=true;
+
             }
-        }while (apagar!=true);
+
+        }while (!apagar);
 
 
 

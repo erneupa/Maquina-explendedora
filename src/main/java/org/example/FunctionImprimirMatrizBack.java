@@ -14,7 +14,7 @@ public class FunctionImprimirMatrizBack {
             System.out.print("|  ");
             for (int columna = 0; columna < arrayMaquinaBack[fila].length; columna++) {
 
-
+                arrayMaquinaBack[fila][columna]=5;
                 System.out.print(" " + arrayMaquinaBack[fila][columna] + "   |  ");
 
             }
