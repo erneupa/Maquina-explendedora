@@ -12,8 +12,42 @@ public class Main {
 
         String[][] arrayMaquina = new String[6][5];
         int[][] arrayMaquinaBack = new int[6][5];
-        int[] precios={1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+        int[] precios={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+        String[] productosNombres = {
+                "Agua",
+                "CocaCola",
+                "Fanta",
+                "Sprite",
+                "Pepsi",
+                "Zumo",
+                "Monster",
+                "RedBull",
+                "Café",
+                "Té",
+                "Patatas",
+                "Doritos",
+                "Cheetos",
+                "Palomitas",
+                "Gusanos",
+                "Cacahuetes",
+                "Pistachos",
+                "Almendras",
+                "KitKat",
+                "Snickers",
+                "Twix",
+                "Mars",
+                "Oreo",
+                "Galletas",
+                "Donut",
+                "Croissant",
+                "Chicle",
+                "Caramelo",
+                "Gominolas",
+                "Chocolatina"
+        };
+
         int[] productosStock= new int[30];
+        int contadorMostrarProductos=110;
         int contadorArrayStock=0;
         int seleccion;
         boolean estadoSeleccion=false;
@@ -67,6 +101,14 @@ public class Main {
                         }
                     }
                     System.out.println(Arrays.toString(productosStock));
+
+                    System.out.println("| Código | Producto | Precio | Stock |");
+                    System.out.println("--------------------------------------");
+                    while (contadorMostrarProductos<=139){
+                        System.out.println("B"+contadorMostrarProductos+" | "+productosNombres[contadorMostrarProductos-110]+" | "+precios[contadorMostrarProductos-110]+"€"+" | "+productosStock[contadorMostrarProductos-110]);
+                        contadorMostrarProductos++;
+                    }
+
                     break;
 
                 case 2:
