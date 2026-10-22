@@ -13,7 +13,8 @@ public class Main {
         String[][] arrayMaquina = new String[6][5];
         int[][] arrayMaquinaBack = new int[6][5];
         int[] precios={1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
-
+        int[] productosStock= new int[30];
+        int contadorArrayStock=0;
         int seleccion = 0;
         boolean estadoSeleccion=false;
 
@@ -58,7 +59,14 @@ public class Main {
 
                     FunctionImprimirMatrizBack.imprimirMatrizBack(arrayMaquinaBack);
 
+                    for (int fila=0; fila<arrayMaquinaBack.length;fila++){
+                        for (int columna=0;columna<arrayMaquinaBack[fila].length;columna++){
 
+                            productosStock[contadorArrayStock]=arrayMaquinaBack[fila][columna];
+                            contadorArrayStock++;
+                        }
+                    }
+                    System.out.println(Arrays.toString(productosStock));
                     break;
 
                 case 2:
