@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -11,11 +12,12 @@ public class Main {
 
         String[][] arrayMaquina = new String[6][5];
         int[][] arrayMaquinaBack = new int[6][5];
+        int[] precios={1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
 
         int seleccion = 0;
         boolean estadoSeleccion=false;
 
-        String seleccionProducto;
+        String seleccionProducto = "";
         boolean seleccionProductoEncontrado=false;
 
 
@@ -55,6 +57,8 @@ public class Main {
                 case 1:
 
                     FunctionImprimirMatrizBack.imprimirMatrizBack(arrayMaquinaBack);
+
+
                     break;
 
                 case 2:
@@ -88,7 +92,7 @@ public class Main {
 
                 case 3:
 
-                    System.out.println("Acción 3 inactiva");
+                    FunctionCarrito.logicaCarrito(seleccionProducto);
                     break;
 
                 case 4:
