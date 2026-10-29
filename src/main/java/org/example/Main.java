@@ -91,7 +91,7 @@ public class Main {
 
                 case 1:
 
-                    FunctionImprimirMatrizBack.imprimirMatrizBack(arrayMaquinaBack);
+                    FunctionImprimirMatriz.imprimirMatriz(arrayMaquina);
 
                     for (int[] fila : arrayMaquinaBack) {
                         for (int columna : fila) {
@@ -100,43 +100,34 @@ public class Main {
                             contadorArrayStock++;
                         }
                     }
-                    System.out.println(Arrays.toString(productosStock));
 
-                    System.out.println("| Código | Producto | Precio | Stock |");
-                    System.out.println("--------------------------------------");
-                    while (contadorMostrarProductos<=139){
-                        System.out.println("B"+contadorMostrarProductos+" | "+productosNombres[contadorMostrarProductos-110]+" | "+precios[contadorMostrarProductos-110]+"€"+" | "+productosStock[contadorMostrarProductos-110]);
+                    System.out.println();
+                    System.out.printf("| %-10s | %-18s | %-12s | %-10s |\n", "Código", "Producto", "Precio", "Stock");
+                    System.out.println("+------------+--------------------+--------------+------------+");
+
+                    while (contadorMostrarProductos <= 139) {
+                        int i = contadorMostrarProductos - 110;
+                        String codigo = "B" + contadorMostrarProductos;
+                        String precio = precios[i] + "€";
+
+                        System.out.printf("| %-10s | %-18s | %-12s | %-10s |\n",
+                                codigo,
+                                productosNombres[i],
+                                precio,
+                                productosStock[i]);
+
                         contadorMostrarProductos++;
                     }
+                    System.out.println("+------------+--------------------+--------------+------------+");
 
                     break;
 
                 case 2:
 
-                    System.out.println("Escribe el código de producto para añadirlo al carrito: ");
+                    System.out.println("Escribe el código de producto para añadirlo al carrito (o 'salir' para terminar): ");
                     seleccionProducto=escanerSeleccionProducto.nextLine();
 
-                    do{
-
-                        for (String[] fila : arrayMaquina){
-                            for (String columna :fila){
-
-                                if (seleccionProducto.equals(columna)){
-
-                                    System.out.println("Guardando el producto "+seleccionProducto+" en el carrito");
-                                    seleccionProductoEncontrado=true;
-
-                                }
-
-                            }
-                        }
-
-                        if (!seleccionProductoEncontrado){
-                            System.out.println("Escribe el código de producto para añadirlo al carrito: ");
-                            seleccionProducto=escanerSeleccionProducto.nextLine();
-                        }
-
-                    }while(!seleccionProductoEncontrado);
+                    FunctionAnadirCarrito.anadirCarrito(arrayMaquina,seleccionProducto);
 
                     break;
 
