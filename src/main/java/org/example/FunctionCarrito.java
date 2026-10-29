@@ -1,14 +1,14 @@
 package org.example;
 
 public class FunctionCarrito {
-    public static void logicaCarrito(String seleccionProducto) {
+    public static void logicaCarrito(int totalProductosCarrito) {
 
+        if (totalProductosCarrito!=0){
+            System.out.println("Hay producto");
 
-        if (seleccionProducto!=""){
-            System.out.println(seleccionProducto);
         }
         else{
-            System.out.println("No se ha guardado ningún producto en el carrito");
+            System.out.println("No hay productos");
         }
     }
 }

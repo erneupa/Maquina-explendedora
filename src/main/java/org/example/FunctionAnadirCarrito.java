@@ -3,11 +3,14 @@ package org.example;
 import java.util.Scanner;
 
 public class FunctionAnadirCarrito {
-    public static int anadirCarrito(String[][] arrayMaquina, String producto){
+    public static int anadirCarrito(String[][] arrayMaquina){
 
         Scanner escaner=new Scanner(System.in);
         int contador=0;
         boolean encontrado = false;
+
+        System.out.println("Escribe el código de producto para añadirlo al carrito (o 'salir' para terminar): ");
+        String producto = escaner.nextLine();
 
         do{
             if (producto.equalsIgnoreCase("salir")) {

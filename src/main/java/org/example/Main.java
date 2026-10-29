@@ -51,6 +51,7 @@ public class Main {
         int contadorArrayStock=0;
         int seleccion;
         boolean estadoSeleccion=false;
+        int totalProductosCarrito=0;
 
         String seleccionProducto = "";
         boolean seleccionProductoEncontrado=false;
@@ -124,16 +125,15 @@ public class Main {
 
                 case 2:
 
-                    System.out.println("Escribe el código de producto para añadirlo al carrito (o 'salir' para terminar): ");
-                    seleccionProducto=escanerSeleccionProducto.nextLine();
 
-                    FunctionAnadirCarrito.anadirCarrito(arrayMaquina,seleccionProducto);
+                    totalProductosCarrito += FunctionAnadirCarrito.anadirCarrito(arrayMaquina);;
 
                     break;
 
                 case 3:
 
-                    FunctionCarrito.logicaCarrito(seleccionProducto);
+                    FunctionCarrito.logicaCarrito(totalProductosCarrito);
+                    System.out.println(totalProductosCarrito);
                     break;
 
                 case 4:
