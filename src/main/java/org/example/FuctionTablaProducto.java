@@ -25,8 +25,6 @@ public class FuctionTablaProducto {
 
             if (productosStock[i] <= 0) {
                 tablaProductos[i][3] = "AGOTADO";
-            } else {
-                tablaProductos[i][3] = String.valueOf(productosStock[i]);
             }
 
             contadorMostrarProductos++;
