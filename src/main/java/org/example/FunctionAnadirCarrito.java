@@ -1,12 +1,11 @@
 package org.example;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class FunctionAnadirCarrito {
     public static void anadirCarrito(String[][] arrayMaquina, int[][] arrayMaquinaBack, String[] productosNombres, float[] precios, int[] carrito) {
 
-        FuctionTablaProducto.tablaProducto(arrayMaquinaBack, productosNombres, precios);
+        FunctionTablaProducto.tablaProducto(arrayMaquinaBack, productosNombres, precios);
 
         Scanner escaner = new Scanner(System.in);
         boolean salir = false;
@@ -15,7 +14,7 @@ public class FunctionAnadirCarrito {
             System.out.print("Escribe el código del producto o 'salir' para terminar: ");
             String codigo = escaner.nextLine();
 
-            if (Objects.equals(codigo, "salir")) {
+            if (codigo.equalsIgnoreCase("salir")) {
                 salir = true;
             } else {
                 boolean encontrado = false;
@@ -24,7 +23,7 @@ public class FunctionAnadirCarrito {
 
                 for (int fila = 0; fila < arrayMaquina.length; fila++) {
                     for (int columna = 0; columna < arrayMaquina[fila].length; columna++) {
-                        if (codigo.equals(arrayMaquina[fila][columna])) {
+                        if (codigo.equalsIgnoreCase(arrayMaquina[fila][columna])) {
                             encontrado = true;
                             filaEncontrada = fila;
                             colEncontrada = columna;
@@ -46,19 +45,23 @@ public class FunctionAnadirCarrito {
                         System.out.println("El producto " + nombreArticulo + " está AGOTADO.");
                     } else {
                         System.out.print("¿Cuántas unidades deseas de "+nombreArticulo+"?: ");
-                        int unidades = escaner.nextInt();
-                        escaner.nextLine();
 
-                        if (unidades <= 0) {
-                            System.out.println("Tienes que poner una cantidad real.");
-                        } else if (unidades > stockDisponible) {
-                            System.out.println("No hay suficiente stock. Disponibles: " + stockDisponible);
+                        if (!escaner.hasNextInt()) {
+                            System.out.println("Entrada no válida. Debes escribir un número entero.");
+                            escaner.nextLine();
                         } else {
-                            arrayMaquinaBack[filaEncontrada][colEncontrada] -= unidades;
+                            int unidades = escaner.nextInt();
+                            escaner.nextLine();
 
-                            carrito[indiceLineal] += unidades;
-
-                            System.out.println("Añadiendo "+unidades+ " "+nombreArticulo+" En el carrito");
+                            if (unidades <= 0) {
+                                System.out.println("Tienes que poner una cantidad real.");
+                            } else if (unidades > stockDisponible) {
+                                System.out.println("No hay suficiente stock. Disponibles: " + stockDisponible);
+                            } else {
+                                arrayMaquinaBack[filaEncontrada][colEncontrada] -= unidades;
+                                carrito[indiceLineal] += unidades;
+                                System.out.println("Añadiendo " + unidades + " " + nombreArticulo + " al carrito.");
+                            }
                         }
                     }
                 }

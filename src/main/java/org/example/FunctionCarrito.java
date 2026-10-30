@@ -16,7 +16,8 @@ public class FunctionCarrito {
                 float totalProducto = unidades * precioUnidad;
                 totalPagar += totalProducto;
 
-                System.out.println("Preoductos: " +productosNombres[i]+ " Cantidad: "+ unidades+" Precio: "+precioUnidad+ "€  Subtotal: "+totalProducto+ "€");
+                System.out.printf("Productos: %s Cantidad: %d Precio: %.2f €  Subtotal: %.2f €\n",
+                        productosNombres[i], unidades, precioUnidad, totalProducto);
             }
         }
 
@@ -24,7 +25,7 @@ public class FunctionCarrito {
             System.out.println("Tu cesta de la compra está vacía.");
         } else {
             System.out.println("----------------------------------------------------------------");
-            System.out.println("Total a Pagar: "+ totalPagar + "€.");
+            System.out.printf("Total a Pagar: %.2f €\n", totalPagar);
         }
     }
 }

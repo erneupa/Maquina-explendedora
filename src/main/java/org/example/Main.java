@@ -11,10 +11,12 @@ public class Main {
         String[][] arrayMaquina = new String[6][5];
 
         int[][] arrayMaquinaBack = new int[6][5];
-        FunctionInicializarStock.inicializarStock(arrayMaquinaBack, 5);
+        FunctionInicializarStock.inicializarStock(arrayMaquinaBack, 10);
         FunctionInicializarCodigos.inicializarCodigos(arrayMaquina);
 
+
         int[] carrito = new int[30];
+
 
         float[] precios={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
         String[] productosNombres = {
@@ -67,20 +69,24 @@ public class Main {
             System.out.println("6. Salir / Apagar máquina");
 
             System.out.println("Escribe la opción que quieres hacer: ");
+            while (!escanerSeleccion.hasNextInt()) {
+                System.out.println("Entrada no válida. Escribe una opción del 1 al 6: ");
+                escanerSeleccion.next(); // Limpia la letra del escáner
+            }
+
             seleccion = escanerSeleccion.nextInt();
 
             boolean estadoSeleccion = false;
 
-            while (!estadoSeleccion){
-
-                if (seleccion <=0 || seleccion > 6){
-
+            while (!estadoSeleccion) {
+                if (seleccion <= 0 || seleccion > 6) {
                     System.out.println("Vuelve a escribir una opción correcta: ");
+                    while (!escanerSeleccion.hasNextInt()) {
+                        System.out.println("Entrada no válida. Debe ser un número del 1 al 6: ");
+                        escanerSeleccion.next();
+                    }
                     seleccion = escanerSeleccion.nextInt();
-
-                }
-                else{
-
+                } else {
                     estadoSeleccion = true;
                 }
             }
@@ -92,7 +98,7 @@ public class Main {
 
                     FunctionImprimirMatriz.imprimirMatriz(arrayMaquina);
 
-                    FuctionTablaProducto.tablaProducto(arrayMaquinaBack,productosNombres,precios);
+                    FunctionTablaProducto.tablaProducto(arrayMaquinaBack,productosNombres,precios);
 
 
                     break;
@@ -107,13 +113,11 @@ public class Main {
                     break;
 
                 case 4:
-
-                    System.out.println("Acción 4 inactiva");
+                    FunctionCobro.procesarPago(carrito, precios);
                     break;
 
                 case 5:
-
-                    System.out.println("Acción 5 inactiva");
+                    FunctionMantenimiento.modoMantenimiento(arrayMaquina, arrayMaquinaBack, productosNombres);
                     break;
 
                 case 6:

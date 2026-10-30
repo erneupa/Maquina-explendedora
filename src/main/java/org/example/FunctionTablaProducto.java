@@ -1,6 +1,6 @@
 package org.example;
 
-public class FuctionTablaProducto {
+public class FunctionTablaProducto {
     public static void tablaProducto(int[][] arrayMaquinaBack, String[] productosNombres, float[] precios){
 
         int[] productosStock= new int[30];
@@ -20,7 +20,7 @@ public class FuctionTablaProducto {
 
             tablaProductos[i][0] = "B" + contadorMostrarProductos;
             tablaProductos[i][1] = productosNombres[i];
-            tablaProductos[i][2] = precios[i] + "€";
+            tablaProductos[i][2] = String.format("%.2f €", precios[i]);
             tablaProductos[i][3] = String.valueOf(productosStock[i]);
 
             if (productosStock[i] <= 0) {
