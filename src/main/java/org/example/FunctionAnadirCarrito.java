@@ -7,6 +7,7 @@ public class FunctionAnadirCarrito {
     public static int anadirCarrito(String[][] arrayMaquina){
 
         Scanner escaner=new Scanner(System.in);
+        Scanner escaner2=new Scanner(System.in);
         int contador=0;
         boolean encontrado = false;
 
@@ -25,9 +26,15 @@ public class FunctionAnadirCarrito {
                     for (String columna : fila) {
 
                         if (producto.equals(columna)) {
+
                             contador++;
                             encontrado=true;
-                            System.out.println("Guardando el producto " + producto + " en el carrito");
+
+                            System.out.println("Cuantas unidades quieres de "+ producto+"?" );
+                            int unidades = escaner2.nextInt();
+
+                            System.out.println("Guardando "+unidades+" unidad/es de " + producto + " en el carrito");
+
 
                         }
 

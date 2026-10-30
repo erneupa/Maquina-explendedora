@@ -8,10 +8,12 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner escanerSeleccion = new Scanner(System.in);
-        Scanner escanerSeleccionProducto = new Scanner(System.in);
 
         String[][] arrayMaquina = new String[6][5];
+
         int[][] arrayMaquinaBack = new int[6][5];
+        FunctionInicializarStock.inicializarStock(arrayMaquinaBack, 5);
+
         int[] precios={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
         String[] productosNombres = {
                 "Agua",
@@ -46,15 +48,8 @@ public class Main {
                 "Chocolatina"
         };
 
-        int[] productosStock= new int[30];
-        int contadorMostrarProductos=110;
-        int contadorArrayStock=0;
         int seleccion;
-        boolean estadoSeleccion=false;
         int totalProductosCarrito=0;
-
-        String seleccionProducto = "";
-        boolean seleccionProductoEncontrado=false;
 
 
         boolean apagar=false;
@@ -72,6 +67,8 @@ public class Main {
 
             System.out.println("Escribe la opción que quieres hacer: ");
             seleccion = escanerSeleccion.nextInt();
+
+            boolean estadoSeleccion = false;
 
             while (!estadoSeleccion){
 
@@ -94,32 +91,8 @@ public class Main {
 
                     FunctionImprimirMatriz.imprimirMatriz(arrayMaquina);
 
-                    for (int[] fila : arrayMaquinaBack) {
-                        for (int columna : fila) {
+                    FuctionTablaProducto.tablaProducto(arrayMaquinaBack,productosNombres,precios);
 
-                            productosStock[contadorArrayStock] = columna;
-                            contadorArrayStock++;
-                        }
-                    }
-
-                    System.out.println();
-                    System.out.printf("| %-10s | %-18s | %-12s | %-10s |\n", "Código", "Producto", "Precio", "Stock");
-                    System.out.println("+------------+--------------------+--------------+------------+");
-
-                    while (contadorMostrarProductos <= 139) {
-                        int i = contadorMostrarProductos - 110;
-                        String codigo = "B" + contadorMostrarProductos;
-                        String precio = precios[i] + "€";
-
-                        System.out.printf("| %-10s | %-18s | %-12s | %-10s |\n",
-                                codigo,
-                                productosNombres[i],
-                                precio,
-                                productosStock[i]);
-
-                        contadorMostrarProductos++;
-                    }
-                    System.out.println("+------------+--------------------+--------------+------------+");
 
                     break;
 
