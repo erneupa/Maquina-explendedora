@@ -1,7 +1,6 @@
 package org.example;
 
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -13,8 +12,11 @@ public class Main {
 
         int[][] arrayMaquinaBack = new int[6][5];
         FunctionInicializarStock.inicializarStock(arrayMaquinaBack, 5);
+        FunctionInicializarCodigos.inicializarCodigos(arrayMaquina);
 
-        int[] precios={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+        int[] carrito = new int[30];
+
+        float[] precios={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
         String[] productosNombres = {
                 "Agua",
                 "CocaCola",
@@ -49,7 +51,6 @@ public class Main {
         };
 
         int seleccion;
-        int totalProductosCarrito=0;
 
 
         boolean apagar=false;
@@ -97,16 +98,12 @@ public class Main {
                     break;
 
                 case 2:
-
-
-                    totalProductosCarrito += FunctionAnadirCarrito.anadirCarrito(arrayMaquina);;
-
+                    FunctionAnadirCarrito.anadirCarrito(arrayMaquina, arrayMaquinaBack, productosNombres, precios, carrito);
                     break;
 
                 case 3:
 
-                    FunctionCarrito.logicaCarrito(totalProductosCarrito);
-                    System.out.println(totalProductosCarrito);
+                    FunctionCarrito.logicaCarrito(carrito, productosNombres, precios);
                     break;
 
                 case 4:

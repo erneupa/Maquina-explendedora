@@ -4,53 +4,65 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class FunctionAnadirCarrito {
-    public static int anadirCarrito(String[][] arrayMaquina){
+    public static void anadirCarrito(String[][] arrayMaquina, int[][] arrayMaquinaBack, String[] productosNombres, float[] precios, int[] carrito) {
 
-        Scanner escaner=new Scanner(System.in);
-        Scanner escaner2=new Scanner(System.in);
-        int contador=0;
-        boolean encontrado = false;
+        FuctionTablaProducto.tablaProducto(arrayMaquinaBack, productosNombres, precios);
 
-        boolean salir=false;
-        String producto="";
+        Scanner escaner = new Scanner(System.in);
+        boolean salir = false;
+
         while (!salir) {
+            System.out.print("Escribe el código del producto o 'salir' para terminar: ");
+            String codigo = escaner.nextLine();
 
-            System.out.println("Escribe el código de producto para añadirlo al carrito (o 'salir' para terminar): ");
-            producto = escaner.nextLine();
-            if (Objects.equals(producto, "salir")){
-                salir=true;
-            }
-            else{
+            if (Objects.equals(codigo, "salir")) {
+                salir = true;
+            } else {
+                boolean encontrado = false;
+                int filaEncontrada = -1;
+                int colEncontrada = -1;
 
-                for (String[] fila : arrayMaquina) {
-                    for (String columna : fila) {
-
-                        if (producto.equals(columna)) {
-
-                            contador++;
-                            encontrado=true;
-
-                            System.out.println("Cuantas unidades quieres de "+ producto+"?" );
-                            int unidades = escaner2.nextInt();
-
-                            System.out.println("Guardando "+unidades+" unidad/es de " + producto + " en el carrito");
-
-
+                for (int fila = 0; fila < arrayMaquina.length; fila++) {
+                    for (int columna = 0; columna < arrayMaquina[fila].length; columna++) {
+                        if (codigo.equals(arrayMaquina[fila][columna])) {
+                            encontrado = true;
+                            filaEncontrada = fila;
+                            colEncontrada = columna;
+                            break;
                         }
+                    }
+                    if (encontrado) break;
+                }
+
+                if (!encontrado) {
+                    System.out.println("El código no existe.");
+                } else {
+                    int indiceLineal = (filaEncontrada * 5) + colEncontrada;
+                    int stockDisponible = arrayMaquinaBack[filaEncontrada][colEncontrada];
+                    String nombreArticulo = productosNombres[indiceLineal];
 
 
+                    if (stockDisponible <= 0) {
+                        System.out.println("El producto " + nombreArticulo + " está AGOTADO.");
+                    } else {
+                        System.out.print("¿Cuántas unidades deseas de "+nombreArticulo+"?: ");
+                        int unidades = escaner.nextInt();
+                        escaner.nextLine();
+
+                        if (unidades <= 0) {
+                            System.out.println("Tienes que poner una cantidad real.");
+                        } else if (unidades > stockDisponible) {
+                            System.out.println("No hay suficiente stock. Disponibles: " + stockDisponible);
+                        } else {
+                            arrayMaquinaBack[filaEncontrada][colEncontrada] -= unidades;
+
+                            carrito[indiceLineal] += unidades;
+
+                            System.out.println("Añadiendo "+unidades+ " "+nombreArticulo+" En el carrito");
+                        }
                     }
                 }
-                if (!encontrado) {
-                    System.out.println("El producto no existe.");
-                }
-
             }
-
-
         }
-
-        return contador;
     }
-
 }

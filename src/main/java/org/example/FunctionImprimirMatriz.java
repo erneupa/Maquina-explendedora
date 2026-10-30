@@ -2,24 +2,18 @@ package org.example;
 
 public class FunctionImprimirMatriz {
     public static void imprimirMatriz(String[][] arrayMaquina) {
-        int contador=110;
         System.out.println("________________________________________________________");
         System.out.println("|                                                      |");
         System.out.println("|                     AUTOSERVICIO                     |");
         System.out.println("|                                                      |");
 
-        for (int fila = 0; fila < arrayMaquina.length; fila++) {
+        for (String[] strings : arrayMaquina) {
             System.out.println("| |--------------------------------------------------| |");
             System.out.print("|  ");
-            for (int columna = 0; columna < arrayMaquina[fila].length; columna++) {
-
-                arrayMaquina[fila][columna]="B"+contador;
-                contador++;
-                System.out.print(" " + arrayMaquina[fila][columna] + "   |  ");
-
+            for (String string : strings) {
+                System.out.print(" " + string + "   |  ");
             }
             System.out.println();
-
         }
 
         System.out.println("| |--------------------------------------------------| |");
